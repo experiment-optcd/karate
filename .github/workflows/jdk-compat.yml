@@ -1,9 +1,5 @@
-name: jdk-compat
 
-on:
-  push:
-    branches: [ develop ]
-
+name: Modified jdk-compat
 jobs:
   build:
     timeout-minutes: 10
@@ -24,3 +20,7 @@ jobs:
         restore-keys: ${{ runner.os }}-maven-
     - name: build with maven
       run: mvn -B clean install -P pre-release -Djavacpp.platform=linux-x86_64
+    name: build
+'on':
+- push
+- workflow_dispatch
